@@ -114,7 +114,8 @@ class Second_page(First_page):
         self.frame.pack(padx=50, pady=200)
 
     '''Funkcja nadpisana z klasy bazowej w tym przypadku z First_page, 
-    bez niej nie możliwe jest wcinięcie find connecting'''
+    bez niej nie możliwe jest wcinięcie find connecting oraz przejcie do
+    do kolejnego okna apliakcji'''
     def new_window(self, number, _class, answers):
         self.new_page = tk.Toplevel(self.master)
         _class(self.new_page, number,answers) 
@@ -151,7 +152,7 @@ class Second_page(First_page):
                                                            (self.font_type,12))
         l.place(x=300, y=130, anchor="center")
 
-    ''' uzyskiwanie odpowiedzi użytkowników z miejsc tk.Entry'''
+    ''' uzyskiwanie odpowiedzi użytkowników z miejsc tk.Entry - strona 3 '''
     def get_user_answers(self):
         answers=[]
         answers.append(self.student_place.get())
@@ -191,7 +192,7 @@ class Second_page(First_page):
 
                 if all (inp not in new_dict for inp in (inp_from,inp_to)):
                     l = tk.Label(self.master,
-                                 text ="We don't have such connection...",
+                                 text ="No such connection. Enter the names of the stops correctly",
                                  font=( self.font_type ,12),
                                  bg="white", fg="black",
                                  wraplength=600)
@@ -230,7 +231,7 @@ class Second_page(First_page):
     ''' wyświetlanie przystanków autobusowych w bezpośrednim połączeniu tam 
     i z powrotem '''
     def bus_stops_display(self,busStops,inpFrom,inpTo):
-        l = tk.Label(self.master, text = "Write down line of tram/bus!!!",
+        l = tk.Label(self.master, text = "Write correctly the above line of tram/bus!",
                      font=(self.font_type, 8),bg="white", fg="black")
         l.place(x=300, y=390, anchor="center")
 
@@ -239,7 +240,7 @@ class Second_page(First_page):
         final_stops=[]
 
         greater = max(from_index,to_index)
-        smaller=min(from_index,to_index)
+        smaller = min(from_index,to_index)
     
         for i in range(smaller,greater+1):
             final_stops.append(busStops[i])
